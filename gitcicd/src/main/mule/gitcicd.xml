@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="60d7124f-fdb8-4504-8981-7e2d3f7c416f" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="gitcicdFlow" doc:id="d295503c-c248-4385-a042-197981aa4aff" >
+		<http:listener doc:name="Listener" doc:id="59d08a84-bfe9-4f7e-88ae-deae119ecf45" config-ref="HTTP_Listener_config" path="/gitcicd"/>
+		<logger level="INFO" doc:name="Logger" doc:id="ed9349b0-fa7f-4dad-88b5-853fc17fe7a8" message='#["Initialize git"]'/>
+	</flow>
+</mule>
